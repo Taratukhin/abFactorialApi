@@ -1,4 +1,5 @@
 package model
+package model
 
 type CheckDataType struct { // this structure is needed to check the presence of these fields in the json
 	A *int `json:"a"`
