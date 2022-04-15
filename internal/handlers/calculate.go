@@ -3,10 +3,9 @@ package handlers
 import (
 	"net/http"
 	"encoding/json"
-	"io/ioutil"
 	"github.com/julienschmidt/httprouter"
-	"github.com/Taratukhin/abFactorialApi/internal/functions"
-	"github.com/Taratukhin/abFactorialApi/internal/model"
+	. "github.com/Taratukhin/abFactorialApi/internal/functions"
+	. "github.com/Taratukhin/abFactorialApi/internal/model"
 )
 
 func Calculate(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {

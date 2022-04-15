@@ -3,9 +3,7 @@ package main
 import (
 	"net/http"
 	"github.com/julienschmidt/httprouter"
-	. "github.com/Taratukhin/abFactorialApi/internal/functions"
 	. "github.com/Taratukhin/abFactorialApi/internal/handlers"
-	. "github.com/Taratukhin/abFactorialApi/internal/model"
 )
 
 func main() {

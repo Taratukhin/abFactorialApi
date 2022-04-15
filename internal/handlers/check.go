@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"bytes"
 	"github.com/julienschmidt/httprouter"
-	"github.com/Taratukhin/abFactorialApi/model"
+	. "github.com/Taratukhin/abFactorialApi/internal/model"
 )
 
 func Check(next httprouter.Handle) httprouter.Handle { // middleware for checking arguments
