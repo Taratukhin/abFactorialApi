@@ -14,6 +14,4 @@ COPY --from=build /go/src/app/cmd/server/server /server
 
 EXPOSE 8989
 
-USER nonroot:nonroot
-
 CMD ["/server"]
