@@ -13,8 +13,7 @@
 ## HOWTO
 
 - run with `docker build -t server01 .`
-- test with `curl -i -X GET -H "Content-Type: application/json" -d "{\"a\":2,\"b\":10}" http://localhost:8989/calculate
-curl -i -X GET -H "Content-Type: application/json" -d "{\"a\":3,\"b\":-2}" http://localhost:8989/calculate
-curl -i -X GET -H "Content-Type: application/json" -d "{\"a\":4}" http://localhost:8989/calculate
-` 
+- test 1) OK `curl -i -X GET -H "Content-Type: application/json" -d "{\"a\":2,\"b\":10}" http://localhost:8989/calculate`
+- test 2) Bad Request `curl -i -X GET -H "Content-Type: application/json" -d "{\"a\":3,\"b\":-2}" http://localhost:8989/calculate`
+- test 3) Bad Request `curl -i -X GET -H "Content-Type: application/json" -d "{\"a\":4}" http://localhost:8989/calculate`
 
