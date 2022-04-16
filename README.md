@@ -12,9 +12,9 @@
 
 ## HOWTO
 
-- run `docker build -t server01 .`
-- run `docker run -d -p 8989:8989 server01`
-- test 1) OK `curl -i -X GET -H "Content-Type: application/json" -d "{\"a\":2,\"b\":10}" http://localhost:8989/calculate`
-- test 2) Bad Request `curl -i -X GET -H "Content-Type: application/json" -d "{\"a\":3,\"b\":-2}" http://localhost:8989/calculate`
-- test 3) Bad Request `curl -i -X GET -H "Content-Type: application/json" -d "{\"a\":4}" http://localhost:8989/calculate`
+- Run `docker build -t server01 .`
+- Run `docker run -d -p 8989:8989 server01`
+- 1) OK. Run `curl -i -X GET -H "Content-Type: application/json" -d "{\"a\":2,\"b\":10}" http://localhost:8989/calculate`
+- 2) Bad Request. Run `curl -i -X GET -H "Content-Type: application/json" -d "{\"a\":3,\"b\":-2}" http://localhost:8989/calculate`
+- 3) Bad Request. Run `curl -i -X GET -H "Content-Type: application/json" -d "{\"a\":4}" http://localhost:8989/calculate`
 
