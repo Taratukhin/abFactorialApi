@@ -13,6 +13,7 @@ func Check(next httprouter.Handle) httprouter.Handle { // middleware for checkin
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		bodyBytes, err := ioutil.ReadAll(r.Body)
 		if err != nil {
+			w.Header().Set("Content-Type", "application/json")
 			http.Error(w, `{"error":"Incorrect input"}`, http.StatusBadRequest)
 			return
 		}
@@ -21,6 +22,7 @@ func Check(next httprouter.Handle) httprouter.Handle { // middleware for checkin
 		var data CheckDataType
 		err = json.Unmarshal(bodyBytes, &data)
 		if err != nil || data.A == nil || data.B == nil || *data.A < 0 || *data.B < 0 {
+			w.Header().Set("Content-Type", "application/json")
 			http.Error(w, `{"error":"Incorrect input"}`, http.StatusBadRequest)
 			return
 		}
