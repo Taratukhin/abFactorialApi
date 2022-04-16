@@ -12,10 +12,9 @@ import (
 func Check(next httprouter.Handle) httprouter.Handle { // middleware for checking arguments
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		w.Header().Set("Content-Type", "application/json")
-		w.Header().Set("cache-control", "no-cashe")
+		w.Header().Set("Cache-control", "no-cashe")
 		bodyBytes, err := ioutil.ReadAll(r.Body)
 		if err != nil {
-			//http.Error(w, `{"error":"Incorrect input"}`, http.StatusBadRequest)
 			w.WriteHeader(http.StatusBadRequest)
 			w.Write([]byte(`{"error":"Incorrect input"}`))
 			return
@@ -25,7 +24,6 @@ func Check(next httprouter.Handle) httprouter.Handle { // middleware for checkin
 		var data CheckDataType
 		err = json.Unmarshal(bodyBytes, &data)
 		if err != nil || data.A == nil || data.B == nil || *data.A < 0 || *data.B < 0 {
-			//http.Error(w, `{"error":"Incorrect input"}`, http.StatusBadRequest)
 			w.WriteHeader(http.StatusBadRequest)
 			w.Write([]byte(`{"error":"Incorrect input"}`))
 			return
