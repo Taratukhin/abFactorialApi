@@ -10,11 +10,14 @@ import (
 
 func Calculate(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("cache-control", "no-cashe")
 	var data DataType
 	decoder := json.NewDecoder(r.Body)
 	err := decoder.Decode(&data)
 	if err != nil { // this check is superfluous, but what happens if we remove the middleware?
-		http.Error(w, `{"error":"Incorrect input"}`, http.StatusBadRequest)
+		//http.Error(w, `{"error":"Incorrect input"}`, http.StatusBadRequest)
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(`{"error":"Incorrect input"}`))
 		return
 	}
 	c1 := make(chan struct{})
@@ -35,7 +38,9 @@ func Calculate(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	}
 	err = json.NewEncoder(w).Encode(data)
 	if err != nil {
-		http.Error(w, `{"error":"Incorrect output"}`, http.StatusBadRequest)
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(`{"error":"Incorrect output"}`))
+		//http.Error(w, `{"error":"Incorrect output"}`, http.StatusBadRequest)
 		return
 	}
 }
