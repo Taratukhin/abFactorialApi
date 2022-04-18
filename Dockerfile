@@ -4,6 +4,8 @@ COPY . /go/src/app
 
 WORKDIR /go/src/app/cmd/server
 
+RUN CGO_ENABLED=0 go test -v ./../../...
+
 RUN go build -o server server.go
 
 FROM alpine
